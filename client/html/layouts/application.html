@@ -7,11 +7,21 @@
     <meta name="description" content="Open Assessments">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
+      }
       window.DEFAULT_SETTINGS = {
         user_id      : 0,
         max_attempts : 1,
-        eid          : "external_identifier",
-        api_url      : "https://qbank-clix-dev.mit.edu/api/v1/",
+        eid          : getCookie('unplatform_session_id'),
+        api_url      : "https://localhost:8080/api/v1/",
         bank:          "assessment.Bank%3A57a0955fc89cd92619aabb2b%40ODL.MIT.EDU",
         assessment_offered_id: "assessment.AssessmentOffered%3A57bb7863c89cd9638af5e179%40ODL.MIT.EDU",
         assessment_kind: "SUMMATIVE",
@@ -21,7 +31,6 @@
         locale: "en",
         audio_recorder_timeout: 100,
       };
-      window.DEFAULT_JWT = null;
     </script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -35,12 +44,11 @@
         "HTML-CSS": { availableFonts: ["TeX"] }
       });
     </script>
-    <script src="MathJax/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <script src="./MathJax/MathJax.js?config=TeX-MML-AM_HTMLorMML.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <%- include('./partials/_header.html') %>
     <%- content %>
-    <%- include('./partials/_google_analytics.html') %>
   </body>
 </html>
