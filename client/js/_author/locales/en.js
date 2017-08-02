@@ -39,7 +39,7 @@ export default {
       nOfMLabel: 'N of M selector',
       all: 'All questions',
       nOfM: '{0} of {1}',
-      prevBtnLabel: 'Unlock Previous',
+      prevBtnLabel: 'Display Previous Questions',
       prevBtnAlways: 'Always',
       prevBtnNever: 'Never',
       saveAssessmentTitle: 'Next'
@@ -80,11 +80,12 @@ export default {
       addOption: 'Add Option'
     },
     movableFillBlank: {
+      newOption: 'Enter Option Text',
       ...feedback
     },
     movableWordSentanceOption: {
       NA: 'N/A',
-      newOption: 'New Option'
+      newOption: 'Enter Option Text'
     },
     movableWordSentence: {
       ...feedback
@@ -93,9 +94,10 @@ export default {
       ...feedback
     },
     multipleChoiceOptions: {
-      optionText: 'Option Text'
+      optionText: 'Enter Option Text'
     },
     mwSandbox: {
+      newOption: 'Enter Option {0} Text',
       feedback: 'Feedback',
     },
     navigationBarContent: {
@@ -114,6 +116,15 @@ export default {
     },
     optionFeedback: {
       feedback: 'Feedback',
+    },
+    optionInstructions: {
+      fitbLeft: 'Select the correct answer',
+      fitbRight: 'Select the part of speech for each option',
+      mwRight: 'Select the part of speech for each option',
+      mwLeft: 'Number the options in the correct order',
+      mcmaLeft: 'Select all the options that form the correct answer',
+      mcLeft: 'Select the correct answer',
+      imageSequenceLeft: 'Number the options in the correct order'
     },
     previewHeader: {
       closePreview: 'Close Preview'
@@ -160,8 +171,8 @@ export default {
     },
     questionText: {
       instructions: 'To insert blank, add [ _ ] where you want the blank to show up.',
-      fitbPlaceholder: 'Fill in the [ _ ] Text',
-      otherPlaceholder: 'Question Text'
+      fitbPlaceholder: 'Fill in the [ _ ] Text in English',
+      otherPlaceholder: 'Please enter the question text in English'
     },
     dragAndDrop: {
       draggableAnswers: 'Draggable answers'
