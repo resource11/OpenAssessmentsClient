@@ -50,6 +50,7 @@ describe('image sequence component', () => {
 
   it('renders the component', () => {
     expect(result.find('.au-c-question__feedback').length).toBe(2);
+    expect(result.state().hasChanged).toEqual(false);
   });
 
   it('renders two Feedback components', () => {
@@ -65,5 +66,17 @@ describe('image sequence component', () => {
     const feedback = result.find(Feedback);
     feedback.at(0).nodes[0].props.updateItem();
     expect(calledFunc).toBeTruthy();
+  });
+
+  it('changes state when call onUpdateChoice', () => {
+    expect(result.state().hasChanged).toEqual(false);
+    result.instance().onUpdateChoice();
+    expect(result.state().hasChanged).toEqual(true);
+  });
+
+  it('sets disabled flag correctly on the Save button', () => {
+    expect(result.find({ disabled: true }).length).toEqual(1);
+    result.setState({ hasChanged: true });
+    expect(result.find({ disabled: true }).length).toEqual(0);
   });
 });

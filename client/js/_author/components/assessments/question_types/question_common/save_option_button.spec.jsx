@@ -25,4 +25,11 @@ describe('save option button component', () => {
     button.simulate('click');
     expect(calledFunction).toBeTruthy();
   });
+
+  it('has inactive class if disabled', () => {
+    expect(result.find('.is-inactive').length).toEqual(0);
+    props.disabled = true;
+    result = shallow(<SaveOptionButton {...props} />);
+    expect(result.find('.is-inactive').length).toEqual(1);
+  });
 });

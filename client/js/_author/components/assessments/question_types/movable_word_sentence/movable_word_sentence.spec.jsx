@@ -55,6 +55,7 @@ describe('movable word sentece component', () => {
 
   it('renders the movable word sentence component', () => {
     expect(result.find('.au-c-movable__answers'));
+    expect(result.state().hasChanged).toEqual(false);
   });
 
   it('renders Option', () => {
@@ -108,5 +109,17 @@ describe('movable word sentece component', () => {
     expect(calledFunc).toBeFalsy();
     result.find('.au-c-movable__answers').simulate('blur', { target: { value: 'Preposition' } });
     expect(calledFunc).toBeTruthy();
+  });
+
+  it('changes state when call onUpdateChoice', () => {
+    expect(result.state().hasChanged).toEqual(false);
+    result.instance().onUpdateChoice();
+    expect(result.state().hasChanged).toEqual(true);
+  });
+
+  it('sets disabled flag correctly on the Save button', () => {
+    expect(result.find({ disabled: true }).length).toEqual(1);
+    result.setState({ hasChanged: true });
+    expect(result.find({ disabled: true }).length).toEqual(0);
   });
 });

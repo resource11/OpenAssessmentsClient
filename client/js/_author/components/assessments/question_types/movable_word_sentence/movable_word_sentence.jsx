@@ -28,9 +28,41 @@ class MovableWordSentence extends React.Component {
     duplicateAnswers: React.PropTypes.arrayOf(React.PropTypes.string),
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasChanged: false
+    };
+  }
+
+  onUpdateChoice = (itemId, choiceId, newChoice, fileIds) => {
+    this.setState({ hasChanged: true });
+    this.props.updateChoice(itemId, choiceId, newChoice, fileIds);
+  }
+
+  onSave = () => {
+    this.setState({ hasChanged: false });
+    this.props.save();
+  }
+
   render() {
     const { question, id } = this.props.item;
     const strings = this.props.localizeStrings('movableWordSentence');
+
+    let saveOptions = (
+      <SaveOptions
+        save={this.onSave}
+        disabled
+      />
+    );
+
+    if (this.state.hasChanged) {
+      saveOptions = (
+        <SaveOptions
+          save={this.onSave}
+        />
+      );
+    }
 
     return (
       <div>
@@ -44,7 +76,7 @@ class MovableWordSentence extends React.Component {
                 key={`assessmentChoice_${choice.id}_${this.props.language}`}
                 {...choice}
                 updateChoice={
-                  (newChoice, fileIds) => this.props.updateChoice(id, choice.id, newChoice, fileIds)
+                  (newChoice, fileIds) => this.onUpdateChoice(id, choice.id, newChoice, fileIds)
                 }
                 isActive={this.props.isActive && choice.id === this.props.activeChoice}
                 deleteChoice={() => this.props.deleteChoice(choice)}
@@ -58,7 +90,7 @@ class MovableWordSentence extends React.Component {
           <Add
             createChoice={() => this.props.createChoice()}
           />
-          <SaveOptions save={this.props.save} />
+          {saveOptions}
         </div>
         <div className="au-c-question__feedback">
           <Feedback

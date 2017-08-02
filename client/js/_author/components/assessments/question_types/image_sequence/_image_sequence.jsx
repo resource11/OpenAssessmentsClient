@@ -30,7 +30,18 @@ class ImageSequence extends React.Component {
     super(props);
     this.state = {
       choiceId: null,
+      hasChanged: false
     };
+  }
+
+  onUpdateChoice = (itemId, choiceId, newChoice, fileIds) => {
+    this.setState({ hasChanged: true });
+    this.props.updateChoice(itemId, choiceId, newChoice, fileIds);
+  }
+
+  onSave = () => {
+    this.setState({ hasChanged: false });
+    this.props.save();
   }
 
   getFeedback() {
@@ -63,6 +74,21 @@ class ImageSequence extends React.Component {
   }
 
   render() {
+    let saveOptions = (
+      <SaveOptions
+        save={this.onSave}
+        disabled
+      />
+    );
+
+    if (this.state.hasChanged) {
+      saveOptions = (
+        <SaveOptions
+          save={this.onSave}
+        />
+      );
+    }
+
     return (
       <div style={{ display: this.props.isActive ? 'block' : 'none' }}>
         <ImageOrder
@@ -71,10 +97,10 @@ class ImageSequence extends React.Component {
           activeChoice={this.state.activeChoice}
           deleteChoice={this.props.deleteChoice}
           item={this.props.item}
-          updateChoice={this.props.updateChoice}
+          updateChoice={this.onUpdateChoice}
           duplicateAnswers={this.props.duplicateAnswers}
         />
-        <SaveOptions save={this.props.save} />
+        {saveOptions}
         <div className="au-c-question__feedback">
           { this.getFeedback() }
         </div>
