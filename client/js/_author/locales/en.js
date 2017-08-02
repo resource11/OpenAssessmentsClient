@@ -48,7 +48,7 @@ export default {
       rangeWarning: 'Please enter a positive number under'
     },
     backButton: {
-      back: 'Back'
+      back: 'Done'
     },
     bankListHeader: {
       name: 'Name',
