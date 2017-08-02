@@ -17,7 +17,7 @@ ShallowWrapper {
     >
         keyboard_arrow_left
     </i>
-    Back
+    Done
 </button>,
   "nodes": Array [
     <button
@@ -29,7 +29,7 @@ ShallowWrapper {
       >
             keyboard_arrow_left
       </i>
-      Back
+      Done
 </button>,
   ],
   "options": Object {},
@@ -79,7 +79,7 @@ ShallowWrapper {
           >
                     keyboard_arrow_left
           </i>
-          Back
+          Done
 </button>,
         "_debugID": 2,
         "_renderedOutput": <button
@@ -91,7 +91,7 @@ ShallowWrapper {
           >
                     keyboard_arrow_left
           </i>
-          Back
+          Done
 </button>,
       },
       "_renderedNodeType": 0,
