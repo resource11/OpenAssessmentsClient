@@ -5,7 +5,17 @@ import ItemTypes          from '../draggable_item_types';
 
 const droppableSource = {
   beginDrag(props, monitor, component) {
-    const bounds = component.node.getBoundingClientRect();
+    // const bounds = component.node.getBoundingClientRect();
+    // This assumes that the droppable "innerHTML", set by the
+    //   author, only has ONE root DOM element, be it an
+    //   <img> tag, or a wrapping <div>, etc.
+    // By checking the height of the child, we ensure that the
+    //   droppable is dragged by the center of the desired image / text.
+    // This fixes a bug where one droppable might be very tall compared
+    //   to the others, which made the Droppable components all
+    //   the same height in the player...and the mouse would jump
+    //   to the middle of the Droppable and off the small images.
+    const bounds = component.node.firstChild.getBoundingClientRect();
     const body = document.getElementsByTagName('body')[0];
     body.className = 'dragging';
     return {
