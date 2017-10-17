@@ -7,7 +7,7 @@
 
 //Text colors
 $text-color: #4A4A4A;
-$subtext-color: #9B9B9B;
+$subtext-color: #777777;
 
 //Shades of gray
 $dark-gray: #636463;
@@ -57,6 +57,22 @@ $header-border: $lightest-gray;
 @mixin answer-clicked{
   background: $primary;
   border-color: $primary;
+}
+
+//Answer container styling when focuseded
+@mixin answer-focused{
+  // background: $primary;
+  border-color: $accent;
+  outline: 2px solid red;
+  outline-offset: 4px;
+}
+
+//Answer container styling when focuseded
+@mixin answer-is-focused{
+  // background: $primary;
+  border-color: $accent;
+  outline: 2px solid green;
+  outline-offset: 4px;
 }
 //Color for answer text
 $answer-text: $text-color;

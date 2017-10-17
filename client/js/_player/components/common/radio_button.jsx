@@ -1,8 +1,6 @@
-"use strict";
+import React                             from 'react';
 
-import React                             from "react";
-
-export default class RadioButton extends React.Component{
+export default class RadioButton extends React.Component {
 
   static propTypes = {
     // Item being displayed
@@ -20,69 +18,68 @@ export default class RadioButton extends React.Component{
     isDisabled: React.PropTypes.bool,
 
     // Whether or not input should be selected
-    checked: React.PropTypes.bool
+    checked: React.PropTypes.bool,
+
+    // Whether or not input should be focused
+    focused: React.PropTypes.bool,
+
+    // Whether or not to call focus to input
+    onFocus: React.PropTypes.func
   }
 
-  selectAnswer(){
+  selectAnswer() {
     this.props.selectAnswer(this.props.item.id);
   }
 
-  checkedStatus(){
-    let checked = null;
-    let optionFlag = null;
-
-    if(this.props.checked === true) {
-      checked = true;
-    } else if(this.props.checked === false) {
-      checked = false;
-    } else if(!this.props.isDisabled) {
-      // checked = (AssessmentStore.studentAnswers() && AssessmentStore.studentAnswers().indexOf(this.props.item.id) > -1) ? "true" : null; TODO
-    }
-
-    return checked;
-  }
-
   renderMaterial(material, isHtml) {
-    if(isHtml) {
-      return <div className="c-answer-container__content"
-                  dangerouslySetInnerHTML={{__html: material}} />;
-    } else {
+    if (isHtml) {
       return (
-        <div className="c-answer-container__content">
-          <p>{material}</p>
-        </div>
-      );
+        <div
+          className="c-answer-container__content"
+          dangerouslySetInnerHTML={{ __html: material }}
+        />);
     }
+
+    return (
+      <div className="c-answer-container__content">
+        <p>{material}</p>
+      </div>
+    );
   }
 
   render() {
     const props = this.props;
-    var containerStyle = "";
-
-    if(this.props.checked === true){containerStyle = "is-clicked";}
+    const { id, name, isDisabled, isHtml, focused, onFocus } = props;
 
     return (
-      <li className={`c-answer-container ${containerStyle}`}>
+      <div className='o-grid'>
         <label
-          htmlFor={props.id}>
+          htmlFor={id}
+          key={id}
+          className={focused ? `c-answer-container is-focused` : 'c-answer-container'}
+          onClick={() => this.selectAnswer()}
+        >
           <div className="c-answer-container__radio">
             <div className="c-radio-button">
-              <input type="radio"
-                     checked={this.checkedStatus()}
-                     disabled={props.isDisabled}
-                     name="radio"
-                     id={props.id}
-                     onChange={() => { this.selectAnswer(); }} />
-                   <div className="c-radio-button__border">
-                <span></span>
-               </div>
+
+              <div className="c-radio-button__border">
+                <input
+                  type="radio"
+                  disabled={isDisabled}
+                  name={name}
+                  id={id}
+                  onChange={() => this.selectAnswer()}
+                  onFocus={() => onFocus(true)}
+                />
+                <span />
+              </div>
             </div>
           </div>
           <div className="c-answer-container__content">
-            {this.renderMaterial(props.item.material, props.isHtml)}
+            {this.renderMaterial(props.item.material, isHtml)}
           </div>
         </label>
-      </li>
+      </div>
     );
   }
 }

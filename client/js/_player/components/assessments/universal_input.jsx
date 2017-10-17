@@ -48,11 +48,26 @@ export default class UniversalInput extends React.Component {
     audioRecordStop: React.PropTypes.func
   };
 
+  constructor() {
+    super();
+    this.state = {
+      focusedItem: null
+    };
+  }
+
   wasSelected(id) {
     if (this.props.response) {
       return this.props.response.indexOf(id) > -1;
     }
     return null;
+  }
+
+  focusItem(shouldFocus, item) {
+    if (shouldFocus) {
+      this.setState({ focusedItem: item });
+    } else {
+      this.setState({ focusedItem: null });
+    }
   }
 
   render() {
@@ -121,6 +136,8 @@ export default class UniversalInput extends React.Component {
               name="answer-radio"
               checked={this.wasSelected(answer.id)}
               selectAnswer={selectRadio}
+              focused={this.state.focusedItem === answer.id}
+              onFocus={shouldFocus => this.focusItem(shouldFocus, answer.id)}
             />
           );
         };
@@ -130,11 +147,8 @@ export default class UniversalInput extends React.Component {
               className="visuallyhidden"
               dangerouslySetInnerHTML={{ __html: props.item.material }}
             />
-            {_.chunk(item.answers, 2).map(row => (
-              <ul key={`${item.id}_row_${row[0].id}`} className="o-grid">
-                {row.map(multipleChoiceAnswer)}
-              </ul>
-            ))}
+            {item.answers.map(multipleChoiceAnswer)}
+
           </fieldset>);
         break;
       }

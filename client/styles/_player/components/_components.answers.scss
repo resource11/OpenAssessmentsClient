@@ -8,6 +8,7 @@
 
 .o-grid{
   @include display-flex;
+  flex-flow: row wrap;
   @include justify-content(space-between);
   @include align-items(stretch);
 }
@@ -23,9 +24,15 @@
   cursor: pointer;
   @include transition(all 0.1s ease);
 
+  &:focus{
+    @include answer-focused;
+  }
+
   &:hover{
     @include answer-hover;
   }
+
+
 
   &.is-clicked{
     @include answer-clicked;
@@ -41,6 +48,17 @@
     }
   }
 }
+
+.is-focused{
+    @include answer-is-focused;
+
+    .c-answer-container__content{
+      p{
+        color: $answer-text-clicked;
+      }
+    }
+  }
+
 
 .c-answer-container__radio{
   width: 2rem;
@@ -78,11 +96,19 @@
   }
 
   input{
-    display: none;
-    margin: 0;
-    height: 0.01rem;
-    width: 0.01rem;
-  }
+    // display: none;
+    // margin: 0;
+    // height: 0.01rem;
+    // width: 0.01rem;
+    // border: 0;
+    // clip: rect(0 0 0 0);
+    // height: 1px;
+    // margin: -1px;
+    // overflow: hidden;
+    // padding: 0;
+    // position: absolute;
+    // width: 1px;
+    }
 }
 
 .c-checkbox{
