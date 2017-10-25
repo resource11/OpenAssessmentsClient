@@ -71,7 +71,7 @@
 }
 
 //display inline-flex mixin
-@mixin display-flex {
+@mixin display-inline-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

@@ -51,7 +51,8 @@ export default class UniversalInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      focusedItem: null
+      focusedItem: null,
+      selectedRadio: null
     };
   }
 
@@ -62,7 +63,7 @@ export default class UniversalInput extends React.Component {
     return null;
   }
 
-  focusItem(shouldFocus, item) {
+  focusItem(shouldFocus, item) { // set currently-focused item
     if (shouldFocus) {
       this.setState({ focusedItem: item });
     } else {
