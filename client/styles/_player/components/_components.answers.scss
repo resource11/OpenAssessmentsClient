@@ -1,7 +1,7 @@
-.c-answers{
+.c-answers {
   padding: 0 3rem;
 
-  fieldset{
+  fieldset {
     border: none;
   }
 }
@@ -16,7 +16,7 @@
   @include display-flex;
 }
 
-.c-answer-container{
+.c-answer-container {
   @include answer-styling;
   border-radius: $radius;
   min-height: 3.5rem;
@@ -26,13 +26,13 @@
   cursor: pointer;
   @include transition(all 0.1s ease);
 
-  &:hover{
+  &:hover {
     @include answer-hover;
   }
 
 
 
-  &.is-clicked{
+  &.is-clicked {
     @include answer-clicked;
 
     .c-answer-container__content{
@@ -47,7 +47,17 @@
   }
 }
 
-.is-focused{
+.c-answer-container--disabled {
+  @include answer-styling;
+  border-radius: $radius;
+  min-height: 3.5rem;
+  position: relative;
+  padding: 0.8rem 0.8rem 0;
+  margin: 0 0.75rem 1.5rem;
+  @include transition(all 0.1s ease);
+}
+
+.is-focused {
     @include answer-is-focused;
 
     .c-answer-container__content{
@@ -62,16 +72,16 @@
   }
 
 
-.c-answer-container__radio{
+.c-answer-container__radio {
   width: 2rem;
   position: absolute;
   left: 0.8rem;
   top: 0.8rem;
 }
 
-.c-radio-button{
+.c-radio-button {
 
-  .c-radio-button__border{
+  .c-radio-button__border {
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -86,7 +96,7 @@
     }
   }
 
-  input{
+  input {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -98,9 +108,9 @@
   }
 }
 
-.c-checkbox{
+.c-checkbox {
 
-  .c-checkbox__border{
+  .c-checkbox__border {
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -111,7 +121,7 @@
     margin: 0.2rem;
   }
 
-  input[type="checkbox"]:checked + .c-checkbox__border:before{
+  input[type="checkbox"]:checked + .c-checkbox__border:before {
     content: '';
     width: 0.3rem;
     height: 0.8rem;
@@ -123,12 +133,12 @@
     left: 0.3rem;
   }
 
-  input[type="checkbox"]:checked + .c-checkbox__border{
+  input[type="checkbox"]:checked + .c-checkbox__border {
     border-color: $radio-selected;
     background: $radio-selected;
   }
 
-  input{
+  input {
     display: none;
     margin: 0;
     height: 0.01rem;
@@ -136,7 +146,7 @@
   }
 }
 
-.c-answer-container__content{
+.c-answer-container__content {
   width: 100%;
   padding-left: 3rem;
   @include regular;
@@ -147,23 +157,23 @@
     margin-bottom: 1rem;
   }
 
-  img{
+  img {
     display: inline-block;
     max-width: 20rem;
   }
 
-  audio{
+  audio {
     width: 100%;
   }
 }
 
-.c-record{
+.c-record {
   padding: 2rem 3rem 1rem;
   @include display-flex;
   @include align-items(center);
 }
 
-.c-audio-holder{
+.c-audio-holder {
     padding: .5rem 1.14rem .65rem 0;
     @include flex(1);
     margin-left: 1rem;
@@ -173,29 +183,29 @@
     }
 }
 
-.c-audio-timer{
+.c-audio-timer {
   padding: .08rem 1.14rem .1rem 0;
   color: #5a5a5a;
   @include light;
   font-size: 2.2rem;
 
-  small{
+  small {
     @include regular;
     font-size: 1.3rem;
   }
 }
 
-.c-btn--record{
+.c-btn--record {
   background: $white;
   border-color: $incorrect;
   width: 10.5rem;
   text-align: left;
   @include transition(all 0.1s ease);
 
-  &:hover{
+  &:hover {
     background: $incorrect;
 
-    span{
+    span {
       color: $white;
       &:before{
         background: $white;
@@ -203,13 +213,13 @@
     }
   }
 
-  span{
+  span {
     padding-left: 1.7rem;
     color: $incorrect;
     position: relative;
     @include transition(all 0.1s ease);
 
-    &:before{
+    &:before {
       content: '';
       position: absolute;
       left: -0.5rem;
@@ -221,35 +231,37 @@
     }
   }
 
-  &.c-btn--stop{
-    span{
+  &.c-btn--stop {
+    span {
       color: $white;
       &:before{
         background: $white;
       }
     }
+
     background: $incorrect;
-    span:before{
+
+    span:before {
       animation: blink 2s linear infinite;
       -webkit-animation: blink 2s linear infinite;
     }
   }
-  &.c-btn--stop:active{
+  &.c-btn--stop:active {
     background: darken($incorrect, 10%);
     border-color: darken($incorrect, 10%);
   }
 
-  &.c-btn--subdue[disabled]{
+  &.c-btn--subdue[disabled] {
     visibility: visible;
     background: $white;
     color: darken($light-gray, 10%);
     border-color: darken($light-gray, 10%);
 
-    &:hover{
+    &:hover {
       background: $white;
       border-color: darken($light-gray, 10%);
 
-      span{
+      span {
         color: darken($light-gray, 10%);
         &:before{
           background: darken($light-gray, 10%);
@@ -257,7 +269,7 @@
       }
     }
 
-    span{
+    span {
       color: darken($light-gray, 10%);
       &:before{
           background: darken($light-gray, 10%);
@@ -278,10 +290,10 @@
   }
 }
 
-.c-text-answer{
+.c-text-answer {
   padding: 2rem 3rem 1rem;
 
-  textarea{
+  textarea {
     border: 0.1rem solid $light-gray;
     border-radius: $radius;
     // min-height: 10rem;
@@ -294,7 +306,7 @@
   }
 }
 
-.c-file-upload{
+.c-file-upload {
    margin: 1rem 0;
    padding: 0 1.5rem;
    display: flex;
@@ -314,19 +326,19 @@
    @include transition(all 0.1s ease);
    width: 60vw;
 
- &:hover{
+ &:hover {
    background: $white;
    color: $primary;
  }
 
- span{
+ span {
   padding-top: 0.15rem;
    @include bold;
    text-transform: uppercase;
    @include transition(all 0.1s ease);
  }
 
- input[type="file"]{
+ input[type="file"] {
    width: 0.1px;
    height:0.1px;
    opacity: 0;
@@ -335,7 +347,7 @@
    z-index: -1;
  }
 
-  input[type="text"]{
+  input[type="text"] {
     min-height: 3.5rem;
     overflow: hidden;
     position: relative;

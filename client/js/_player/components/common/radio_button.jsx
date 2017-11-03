@@ -15,7 +15,7 @@ export default class RadioButton extends React.Component {
     selectAnswer: React.PropTypes.func.isRequired,
 
     // Whether or not input should be disabled
-    // isDisabled: React.PropTypes.bool,
+    isDisabled: React.PropTypes.bool,
 
     // // Whether or not input should be selected
     // checked: React.PropTypes.bool,
@@ -28,7 +28,9 @@ export default class RadioButton extends React.Component {
   }
 
   selectAnswer() {
-    this.props.selectAnswer(this.props.item.id);
+    if (!this.props.isDisabled) {
+      this.props.selectAnswer(this.props.item.id);
+    }
   }
 
   renderMaterial(material, isHtml) {
@@ -56,13 +58,26 @@ export default class RadioButton extends React.Component {
         <label
           htmlFor={id}
           key={id}
-          className={focused ? 'c-answer-container is-focused' : 'c-answer-container'}
+          className={isDisabled  // eslint-disable-line no-nested-ternary
+          ? 'c-answer-container--disabled'
+          : (focused && !isDisabled
+          ? 'c-answer-container is-focused'
+          : 'c-answer-container')
+          }
           onClick={() => this.selectAnswer()}
         >
           <div className="c-answer-container__radio">
             <div className="c-radio-button">
               <div className="c-radio-button__border">
-                <i className={props.focused ? 'material-icons radio_button--focused' : 'material-icons'}>{props.checked ? 'radio_button_checked' : 'radio_button_unchecked'}</i>
+                <i
+                  className={focused && !isDisabled
+                  ? 'material-icons radio_button--focused'
+                  : 'material-icons'}
+                >
+                  {checked
+                  ? 'radio_button_checked'
+                  : 'radio_button_unchecked'}
+                </i>
                 <input
                   type="radio"
                   disabled={isDisabled}
