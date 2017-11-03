@@ -6,21 +6,23 @@
   }
 }
 
+.o-grid__wrapper {
+  @include display-flex;
+  @include flex-flow(row wrap);
+  @include justify-content(center);
+}
+
 .o-grid{
-  @include display-inline-flex;
-  flex-flow: row wrap;
-  @include justify-content(space-between);
-  @include align-items(stretch);
+  @include display-flex;
 }
 
 .c-answer-container{
-  @include flex(0 0 49%);
   @include answer-styling;
   border-radius: $radius;
   min-height: 3.5rem;
   position: relative;
   padding: 0.8rem 0.8rem 0;
-  margin-bottom: 1.5rem;
+  margin: 0 0.75rem 1.5rem;
   cursor: pointer;
   @include transition(all 0.1s ease);
 

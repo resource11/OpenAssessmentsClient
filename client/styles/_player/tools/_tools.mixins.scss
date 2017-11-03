@@ -90,6 +90,12 @@
   align-items: $flex;
 }
 
+//flex-flow mixin
+@mixin flex-flow($flex...) {
+  -webkit-flex-flow: $flex;
+  flex-flow: $flex;
+}
+
 //flex mixin
 @mixin flex($flex...) {
   -webkit-flex: $flex;

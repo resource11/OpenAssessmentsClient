@@ -148,8 +148,9 @@ export default class UniversalInput extends React.Component {
               className="visuallyhidden"
               dangerouslySetInnerHTML={{ __html: props.item.material }}
             />
-            {item.answers.map(multipleChoiceAnswer)}
-
+            <div className="o-grid__wrapper">
+              {item.answers.map(multipleChoiceAnswer)}
+            </div>
           </fieldset>);
         break;
       }
