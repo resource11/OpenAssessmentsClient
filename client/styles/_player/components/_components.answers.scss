@@ -332,10 +332,9 @@
  }
 
  span {
-  padding-top: 0.15rem;
-   @include bold;
-   text-transform: uppercase;
-   @include transition(all 0.1s ease);
+  width: 35%;
+  @include semi-bold;
+  @include transition(all 0.1s ease);
  }
 
  input[type="file"] {
@@ -357,7 +356,7 @@
     border-left: 0.25rem solid $primary;
     color: $primary;
     text-overflow: ellipsis;
-    width: 50%;
+    width: 65%;
     @include transition(all 0.1s ease);
   }
 }
