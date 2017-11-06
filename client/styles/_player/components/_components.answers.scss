@@ -303,48 +303,56 @@
     @include regular;
     font-size: 1.4rem;
     color: $text-color;
+    outline: 0;
+
+    &:focus {
+      border: 0.1rem solid $primary;
+    }
   }
 }
 
 .c-file-upload {
-   margin: 1rem 0;
-   padding: 0 1.5rem;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
-   position: relative;
-   border-radius: $radius;
-   border: 0.2rem solid $primary;
-   @include regular;
-   font-size: 1.4rem;
-   line-height: 1.5rem;
-   @include center(horizontal);
-   background: $primary;
-   color: $white;
-   cursor: pointer;
-   @include transition(all 0.1s ease);
-   width: 60vw;
+  margin: 1rem 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: $radius;
+  border: 0.2rem solid $primary;
+  @include regular;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  @include center(horizontal);
+  background: $primary;
+  color: $white;
+  cursor: pointer;
+  @include transition(all 0.1s ease);
+  width: 60vw;
+  outline: 0;
 
- &:hover {
+  &:hover {
    background: $white;
    color: $primary;
- }
+  }
 
- span {
-  width: 35%;
-  @include semi-bold;
-  @include transition(all 0.1s ease);
- }
+  span {
+    width: 35%;
+    @include semi-bold;
+    @include transition(all 0.1s ease);
+  }
 
- input[type="file"] {
-   width: 0.1px;
-   height:0.1px;
-   opacity: 0;
-   overflow: hidden;
-   position: absolute;
-   z-index: -1;
- }
+
+
+  input[type="file"] {
+    width: 0.1px;
+    height:0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
 
   input[type="text"] {
     min-height: 3.5rem;
@@ -359,6 +367,13 @@
     width: 65%;
     @include transition(all 0.1s ease);
   }
+}
+
+.c-file-up--focused {
+  outline-color: darken($primary, 20%);
+  outline-style: dotted;
+  outline-width: 2px;
+  outline-offset: 0.333em;
 }
 
 .c-disable-pointer-n-keys {

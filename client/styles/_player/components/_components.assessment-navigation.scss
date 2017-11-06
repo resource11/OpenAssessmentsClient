@@ -68,6 +68,13 @@
       }
     }
 
+    &:focus{
+      outline-color: $btn-secondary-border;
+      outline-style: dotted;
+      outline-width: 2px;
+      outline-offset: 0.25em;
+    }
+
     svg {
       path{
         fill: $btn-secondary-text;
@@ -128,12 +135,20 @@
     background: $btn-primary-background;
     color: $btn-primary-text;
     border-color: $btn-primary-border;
+    outline: 0;
     @include transition(all 0.2s ease);
 
     &:hover{
       border-color: $btn-primary-border-hover;
       background: $btn-primary-background-hover;
       color: $btn-primary-text-hover;
+    }
+
+    &:focus{
+      outline-color: $btn-secondary-border;
+      outline-style: dotted;
+      outline-width: 2px;
+      outline-offset: 0.25em;
     }
   }
 
