@@ -213,6 +213,13 @@
     }
   }
 
+  &:focus {
+    outline-color: darken($incorrect, 10%);
+    outline-style: dotted;
+    outline-width: 2px;
+    outline-offset: 0.333em;
+  }
+
   span {
     padding-left: 1.7rem;
     color: $incorrect;
@@ -263,7 +270,7 @@
 
       span {
         color: darken($light-gray, 10%);
-        &:before{
+        &:before {
           background: darken($light-gray, 10%);
         }
       }
@@ -271,7 +278,7 @@
 
     span {
       color: darken($light-gray, 10%);
-      &:before{
+      &:before {
           background: darken($light-gray, 10%);
         }
     }
