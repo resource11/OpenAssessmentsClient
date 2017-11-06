@@ -1,19 +1,24 @@
-.c-assessment-navigation{
-  display: table;
+.c-assessment-navigation {
+  display: flex;
+  flex-direction: row-reverse;
   padding: 2rem 3rem 3rem;
 
   .c-button-slot {
-    display: table-cell;
     padding-left: 1.5em;
   }
 
   .c-button-slot:first-child {
+    order: 1;
+  }
+
+  .c-button-slot:last-child {
+    order: 2;
     padding-left: 0;
     width: 100%;
   }
 }
 
-.c-btn{
+.c-btn {
   padding: 0 1.5rem;
   height: 3.5rem;
   border-radius: $radius;
@@ -33,7 +38,7 @@
     }
   }
 
-  span{
+  span {
     display: inline-block;
     height: 100%;
     line-height: 3rem;
@@ -46,19 +51,19 @@
     position: absolute;
     top: .3rem;
 
-    path{
+    path {
       @include transition(all 0.2s ease);
     }
   }
 }
 
-  a.c-btn--previous, .c-btn--previous{
+  a.c-btn--previous, .c-btn--previous {
     background: $btn-secondary-background;
     color: $btn-secondary-text;
     border-color: $btn-secondary-border;
     @include transition(all 0.2s ease);
 
-    &:hover{
+    &:hover {
       border-color: $btn-secondary-border-hover;
       background: $btn-secondary-background-hover;
       color: $btn-secondary-text-hover;
@@ -68,7 +73,7 @@
       }
     }
 
-    &:focus{
+    &:focus {
       outline-color: $btn-secondary-border;
       outline-style: dotted;
       outline-width: 2px;
@@ -76,27 +81,27 @@
     }
 
     svg {
-      path{
+      path {
         fill: $btn-secondary-text;
       }
     }
   }
 
-  a.c-btn--next, .c-btn--next{
-    &:hover{
-      svg path{
+  a.c-btn--next, .c-btn--next {
+    &:hover {
+      svg path {
         fill: $btn-primary-text-hover;
       }
     }
 
     svg {
-      path{
+      path {
         fill: $btn-primary-text;
       }
     }
   }
 
-  [dir="ltr"] .c-btn--previous{
+  [dir="ltr"] .c-btn--previous {
     padding-left: 3rem;
     svg {
       left: .3rem;
@@ -104,7 +109,7 @@
     }
   }
 
-  [dir="ltr"] .c-btn--next{
+  [dir="ltr"] .c-btn--next {
     padding-right: 3rem;
     svg {
       right: .3rem;
@@ -112,7 +117,7 @@
     }
   }
 
-  [dir="rtl"] .c-btn--previous{
+  [dir="rtl"] .c-btn--previous {
     padding-right: 3rem;
     svg {
       right: .3rem;
@@ -120,8 +125,9 @@
     }
   }
 
-  [dir="rtl"] .c-btn--next{
+  [dir="rtl"] .c-btn--next {
     padding-left: 3rem;
+
     svg {
       left: .3rem;
       @include transform(rotate(90deg));
@@ -131,20 +137,20 @@
 
   a.c-btn--check-answer, .c-btn--check-answer,
   a.c-btn--finish, .c-btn--finish,
-  a.c-btn--next, .c-btn--next{
+  a.c-btn--next, .c-btn--next {
     background: $btn-primary-background;
     color: $btn-primary-text;
     border-color: $btn-primary-border;
     outline: 0;
     @include transition(all 0.2s ease);
 
-    &:hover{
+    &:hover {
       border-color: $btn-primary-border-hover;
       background: $btn-primary-background-hover;
       color: $btn-primary-text-hover;
     }
 
-    &:focus{
+    &:focus {
       outline-color: $btn-secondary-border;
       outline-style: dotted;
       outline-width: 2px;
@@ -152,15 +158,16 @@
     }
   }
 
-  a.c-btn--loading, .c-btn--loading{
+  a.c-btn--loading, .c-btn--loading {
     background: $btn-primary-background-hover;
     border-color: $btn-primary-border-hover;
     pointer-events: none;
 
-    span{
+    span {
       opacity: 0;
     }
-    svg{
+
+    svg {
       width: 2.4rem;
       height: 2.4rem;
       position: absolute;
@@ -170,17 +177,18 @@
       animation: spin 0.5s linear infinite;
       -webkit-animation: spin 0.5s linear infinite;
 
-      path{
+      path {
         fill: $accent;
       }
     }
   }
 
 @keyframes spin {
-  0%{
+  0% {
     @include transform(translate(-50%, -50%) rotate(0));
   }
-  100%{
+
+  100% {
     @include transform(translate(-50%, -50%) rotate(360deg));
   }
 }
