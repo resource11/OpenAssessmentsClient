@@ -336,7 +336,7 @@
   color: $white;
   cursor: pointer;
   @include transition(all 0.1s ease);
-  width: 60vw;
+  width: 80%;
   outline: 0;
 
   &:hover {
@@ -348,6 +348,16 @@
     width: 35%;
     @include semi-bold;
     @include transition(all 0.1s ease);
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0.5em;
+      height: 1.95em;
+      @include boxShadow(-4px 0 transparent);
+      top: 0.25em;
+      left: 0.5em;
+      @include transition(all 0.1s ease);
+    }
   }
 
 
@@ -376,11 +386,28 @@
   }
 }
 
+.c-file-up:before {
+  content: '';
+  position: absolute;
+  width: 0.5em;
+  height: 1.95em;
+  @include boxShadow(0 0 transparent);
+  top: 0.25em;
+  left: 0.5em;
+  @include transition(all 0.1s ease);
+}
+
 .c-file-up--focused {
-  outline-color: darken($primary, 20%);
-  outline-style: dotted;
-  outline-width: 2px;
-  outline-offset: 0.333em;
+  // outline-color: darken($primary, 20%);
+  // outline-style: dotted;
+  // outline-width: 2px;
+  // outline-offset: 0.333em;
+
+  span {
+    &:before {
+      @include boxShadow(-4px 0 $btn-primary-text);
+    }
+  }
 }
 
 .c-disable-pointer-n-keys {
