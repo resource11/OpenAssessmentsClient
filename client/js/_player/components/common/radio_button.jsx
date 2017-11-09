@@ -73,6 +73,7 @@ export default class RadioButton extends React.Component {
                   className={focused && !isDisabled
                   ? 'material-icons radio_button--focused'
                   : 'material-icons'}
+                  aria-hidden
                 >
                   {checked
                   ? 'radio_button_checked'

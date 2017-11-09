@@ -143,15 +143,9 @@ export default class UniversalInput extends React.Component {
           );
         };
         answerInputs = (
-          <fieldset>
-            <legend
-              className="visuallyhidden"
-              dangerouslySetInnerHTML={{ __html: props.item.material }}
-            />
-            <div className="o-grid__wrapper">
-              {item.answers.map(multipleChoiceAnswer)}
-            </div>
-          </fieldset>);
+          <div className="o-grid__wrapper" role="radiogroup">
+            {item.answers.map(multipleChoiceAnswer)}
+          </div>);
         break;
       }
       case 'edx_dropdown': {
