@@ -58,7 +58,7 @@
 }
 
 .is-focused {
-    @include answer-is-focused;
+    @include answer-focused;
 
     .c-answer-container__content{
       p{

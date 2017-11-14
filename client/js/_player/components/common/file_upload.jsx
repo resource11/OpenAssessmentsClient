@@ -80,6 +80,7 @@ export default class FileUpload extends React.Component {
         <input
           type="text"
           value={this.handleFileNmDisplay()}
+          tabIndex="-1"
           readOnly
         />
       </label>

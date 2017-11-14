@@ -59,18 +59,12 @@ $header-border: $lightest-gray;
   border-color: $primary;
 }
 
-//Answer container styling when focuseded
+//Answer container styling when focused
 @mixin answer-focused{
   background: $primary;
   border-color: $primary;
 }
 
-//Answer container styling when focuseded
-@mixin answer-is-focused{
-  // background: $primary;
-  background: $primary;
-  border-color: $primary;
-}
 //Color for answer text
 $answer-text: $text-color;
 //Text color when answer is selected
