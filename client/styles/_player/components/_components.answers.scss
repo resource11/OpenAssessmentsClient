@@ -57,19 +57,33 @@
   @include transition(all 0.1s ease);
 }
 
-.is-focused {
-    @include answer-focused;
+.is-checked {
+  @include answer-clicked;
 
-    .c-answer-container__content{
-      p{
-        color: $answer-text-clicked;
-      }
-    }
-
-    .c-feedback{
-      background: $answer-result-background-clicked;
+  .c-answer-container__content{
+    p{
+      color: $answer-text-clicked;
     }
   }
+
+  .c-feedback{
+    background: $answer-result-background-clicked;
+  }
+}
+
+.is-focused {
+  @include answer-focused;
+
+  .c-answer-container__content{
+    p{
+      color: $answer-text-clicked;
+    }
+  }
+
+  .c-feedback{
+    background: $answer-result-background-clicked;
+  }
+}
 
 
 .c-answer-container__radio {

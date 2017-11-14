@@ -55,8 +55,8 @@ $header-border: $lightest-gray;
 }
 //Answer container styling when selected
 @mixin answer-clicked{
-  background: $primary;
-  border-color: $primary;
+  background: darken($primary, 20%);
+  border-color: darken($primary, 20%);
 }
 
 //Answer container styling when focused

@@ -42,9 +42,10 @@ export default class CheckBox extends React.Component {
           key={id}
           className={isDisabled  // eslint-disable-line no-nested-ternary
           ? 'c-answer-container--disabled'
-          : ((focused && !isDisabled) || (checked && !isDisabled)
-          ? 'c-answer-container is-focused'
-          : 'c-answer-container')
+          : (focused && !isDisabled // eslint-disable-line no-nested-ternary
+          ? 'c-answer-container is-focused' : (((checked && !isDisabled)
+          ? 'c-answer-container is-checked'
+          : 'c-answer-container')))
           }
           onClick={() => this.selectAnswer()}
         >
