@@ -34,9 +34,6 @@ export default class CheckBox extends React.Component {
   render() {
     const props = this.props;
     const { id, name, isDisabled, isHtml, checked, focused, onFocus } = props;
-    let containerStyle = '';
-
-    if (this.props.checked === true) { containerStyle = 'is-clicked'; }
 
     return (
       <div className="o-grid">
@@ -55,6 +52,7 @@ export default class CheckBox extends React.Component {
             <div className="c-checkbox">
               <input
                 type="checkbox"
+                className={focused && !isDisabled ? 'input-focused' : ''}
                 disabled={isDisabled}
                 name={name}
                 id={id}
@@ -70,7 +68,7 @@ export default class CheckBox extends React.Component {
             </div>
           </div>
           <div className="c-answer-container__content">
-            {this.renderMaterial(this.props.item.material, this.props.isHtml)}
+            {this.renderMaterial(this.props.item.material, isHtml)}
           </div>
         </label>
       </div>
