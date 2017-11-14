@@ -12,7 +12,9 @@ export default class CheckBox extends React.Component {
   }
 
   selectAnswer() {
-    this.props.selectAnswer(this.props.item.id);
+    if (!this.props.isDisabled) {
+      this.props.selectAnswer(this.props.item.id);
+    }
   }
 
   renderMaterial(material, isHtml) {
@@ -30,22 +32,37 @@ export default class CheckBox extends React.Component {
   }
 
   render() {
+    const props = this.props;
+    const { id, name, isDisabled, isHtml, checked, focused, onFocus } = props;
     let containerStyle = '';
 
     if (this.props.checked === true) { containerStyle = 'is-clicked'; }
 
     return (
-      <li className={`c-answer-container ${containerStyle}`}>
-        <label htmlFor={this.props.id}>
+      <div className="o-grid">
+        <label
+          htmlFor={id}
+          key={id}
+          className={isDisabled  // eslint-disable-line no-nested-ternary
+          ? 'c-answer-container--disabled'
+          : ((focused && !isDisabled) || (checked && !isDisabled)
+          ? 'c-answer-container is-focused'
+          : 'c-answer-container')
+          }
+          onClick={() => this.selectAnswer()}
+        >
           <div className="c-answer-container__radio">
             <div className="c-checkbox">
               <input
                 type="checkbox"
-                checked={this.props.checked}
-                disabled={this.props.isDisabled}
-                name="answer-checkbox"
-                onChange={() => { this.selectAnswer(); }}
-                id={this.props.id}
+                disabled={isDisabled}
+                name={name}
+                id={id}
+                checked={checked}
+                onChange={() => this.selectAnswer()}
+                onKeyDown={(e) => { if (e.keyCode === 32) { this.selectAnswer(); } }}
+                onFocus={() => onFocus(true)}
+                onBlur={() => onFocus(false)}
               />
               <div className="c-checkbox__border">
                 <span />
@@ -56,7 +73,7 @@ export default class CheckBox extends React.Component {
             {this.renderMaterial(this.props.item.material, this.props.isHtml)}
           </div>
         </label>
-      </li>
+      </div>
     );
   }
 }

@@ -9,22 +9,10 @@ export default class RadioButton extends React.Component {
     // Unique html element id
     id: React.PropTypes.string.isRequired,
 
-    // Whether the material is raw HTML to be embedded "dangerously."
-    // isHtml: React.PropTypes.bool,
-
     selectAnswer: React.PropTypes.func.isRequired,
 
     // Whether or not input should be disabled
     isDisabled: React.PropTypes.bool,
-
-    // // Whether or not input should be selected
-    // checked: React.PropTypes.bool,
-
-    // // Whether or not input should be focused
-    // focused: React.PropTypes.bool,
-
-    // // Calls focus to input
-    // onFocus: React.PropTypes.func.isRequired
   }
 
   selectAnswer() {

@@ -221,10 +221,13 @@ export default class UniversalInput extends React.Component {
               isDisabled={props.isResult}
               key={id}
               id={id}
+              name="answer-checkbox"
               item={answer}
               isHtml={item.isHtml}
               checked={this.wasSelected(answer.id)}
               selectAnswer={selectCheckbox}
+              focused={this.state.focusedItem === answer.id}
+              onFocus={shouldFocus => this.focusItem(shouldFocus, answer.id)}
             />
           );
         };
@@ -234,11 +237,9 @@ export default class UniversalInput extends React.Component {
               className="visuallyhidden"
               dangerouslySetInnerHTML={{ __html: props.item.material }}
             />
-            {_.chunk(item.answers, 2).map(row => (
-              <ul key={`${item.id}_row_${row[0].id}`} className="o-grid">
-                {row.map(multipleAnswer)}
-              </ul>
-            ))}
+            <div className="o-grid__wrapper" role="group">
+              {item.answers.map(multipleAnswer)}
+            </div>
           </fieldset>);
         break;
       }
