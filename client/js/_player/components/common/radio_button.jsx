@@ -60,7 +60,7 @@ export default class RadioButton extends React.Component {
           key={id}
           className={isDisabled  // eslint-disable-line no-nested-ternary
           ? 'c-answer-container--disabled'
-          : (focused && !isDisabled
+          : ((focused && !isDisabled) || (checked && !isDisabled)
           ? 'c-answer-container is-focused'
           : 'c-answer-container')
           }
@@ -70,7 +70,7 @@ export default class RadioButton extends React.Component {
             <div className="c-radio-button">
               <div className="c-radio-button__border">
                 <i
-                  className={focused && !isDisabled
+                  className={(focused && !isDisabled) || (checked && !isDisabled)
                   ? 'material-icons radio_button--focused'
                   : 'material-icons'}
                   aria-hidden
@@ -87,6 +87,7 @@ export default class RadioButton extends React.Component {
                   checked={checked}
                   onChange={() => this.selectAnswer()}
                   onFocus={() => onFocus(true)}
+                  onBlur={() => onFocus(false)}
                 />
                 <span />
               </div>
