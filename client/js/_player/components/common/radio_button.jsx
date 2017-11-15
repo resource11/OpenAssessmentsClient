@@ -47,7 +47,7 @@ export default class RadioButton extends React.Component {
           htmlFor={id}
           key={id}
           className={isDisabled  // eslint-disable-line no-nested-ternary
-          ? 'c-answer-container--disabled'
+          ? 'c-answer-container'
           : ((focused && !isDisabled) || (checked && !isDisabled)
           ? 'c-answer-container is-focused'
           : 'c-answer-container')

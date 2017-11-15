@@ -14,16 +14,19 @@
 
 .o-grid{
   @include display-flex;
+  width: 50%;
+  min-width: 275px;
 }
 
 .c-answer-container {
-  @include answer-styling;
-  border-radius: $radius;
+  width: 100%;
   min-height: 3.5rem;
   position: relative;
   padding: 0.8rem 0.8rem 0;
   margin: 0 0.75rem 1.5rem;
   cursor: pointer;
+  @include answer-styling;
+  border-radius: $radius;
   @include transition(all 0.1s ease);
 
   &:hover {
@@ -48,12 +51,14 @@
 }
 
 .c-answer-container--disabled {
-  @include answer-styling;
-  border-radius: $radius;
+  width: 100%;
   min-height: 3.5rem;
   position: relative;
   padding: 0.8rem 0.8rem 0;
   margin: 0 0.75rem 1.5rem;
+  cursor: auto;
+  @include answer-styling;
+  border-radius: $radius;
   @include transition(all 0.1s ease);
 }
 
@@ -72,6 +77,20 @@
 }
 
 .is-focused {
+  @include answer-focused;
+
+  .c-answer-container__content{
+    p{
+      color: $answer-text-clicked;
+    }
+  }
+
+  .c-feedback{
+    background: $answer-result-background-clicked;
+  }
+}
+
+.is-disabled {
   @include answer-focused;
 
   .c-answer-container__content{
@@ -427,11 +446,6 @@
 }
 
 .c-file-up--focused {
-  // outline-color: darken($primary, 20%);
-  // outline-style: dotted;
-  // outline-width: 2px;
-  // outline-offset: 0.333em;
-
   span {
     &:before {
       @include boxShadow(-4px 0 $btn-primary-text);

@@ -65,6 +65,11 @@ $header-border: $lightest-gray;
   border-color: $primary;
 }
 
+@mixin answer-disabled{
+  background: $primary;
+  border-color: $primary;
+}
+
 //Color for answer text
 $answer-text: $text-color;
 //Text color when answer is selected

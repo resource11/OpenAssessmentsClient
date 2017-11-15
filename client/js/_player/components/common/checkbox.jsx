@@ -50,7 +50,11 @@ export default class CheckBox extends React.Component {
           onClick={() => this.selectAnswer()}
         >
           <div className="c-answer-container__radio">
-            <div className="c-checkbox">
+            <div
+              className={focused && !isDisabled
+              ? 'c-checkbox is-disabled'
+              : 'c-checkbox'}
+            >
               <input
                 type="checkbox"
                 className={focused && !isDisabled ? 'input-focused' : ''}
@@ -63,7 +67,11 @@ export default class CheckBox extends React.Component {
                 onFocus={() => onFocus(true)}
                 onBlur={() => onFocus(false)}
               />
-              <div className="c-checkbox__border">
+              <div
+                className={focused && !isDisabled
+                ? 'c-checkbox__border is-disabled'
+                : 'c-checkbox__border'}
+              >
                 <span />
               </div>
             </div>
