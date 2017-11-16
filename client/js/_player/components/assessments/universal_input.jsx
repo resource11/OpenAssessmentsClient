@@ -232,15 +232,10 @@ export default class UniversalInput extends React.Component {
           );
         };
         answerInputs = (
-          <fieldset>
-            <legend
-              className="visuallyhidden"
-              dangerouslySetInnerHTML={{ __html: props.item.material }}
-            />
-            <div className="o-grid__wrapper" role="group">
-              {item.answers.map(multipleAnswer)}
-            </div>
-          </fieldset>);
+          <div className="o-grid__wrapper" role="group">
+            {item.answers.map(multipleAnswer)}
+          </div>
+        );
         break;
       }
       case 'edx_image_mapped_input': {
