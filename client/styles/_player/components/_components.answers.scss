@@ -116,12 +116,13 @@
 
   .c-radio-button__border {
     display: inline-block;
-    cursor: pointer;
-    position: relative;
-    height: 1.5rem;
     width: 1.5rem;
-    border-radius: 50%;
+    height: 1.5rem;
+    position: relative;
     margin: 0.2rem;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 50%;
     color: $radio-color;
 
     .radio_button--focused {
@@ -139,19 +140,26 @@
     position: absolute;
     width: 1px;
   }
+
+  .c-material-icon-resize {
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    font-size: 2.25rem;
+  }
 }
 
 .c-checkbox {
 
   .c-checkbox__border {
     display: inline-block;
-    cursor: pointer;
-    position: relative;
-    height: 1.5rem;
     width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    margin: 0.2rem;
+    cursor: pointer;
     border-radius: 0.3rem;
     border: 0.2rem solid $radio-color;
-    margin: 0.2rem;
   }
 
   .c-checkbox__border--disabled {

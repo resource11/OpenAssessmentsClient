@@ -59,8 +59,8 @@ export default class RadioButton extends React.Component {
               <div className="c-radio-button__border">
                 <i
                   className={(focused && !isDisabled) || (checked && !isDisabled)
-                  ? 'material-icons radio_button--focused'
-                  : 'material-icons'}
+                  ? 'material-icons c-material-icon-resize radio_button--focused'
+                  : 'material-icons c-material-icon-resize'}
                   aria-hidden
                 >
                   {checked
