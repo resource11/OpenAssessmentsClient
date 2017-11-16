@@ -154,6 +154,17 @@
     margin: 0.2rem;
   }
 
+  .c-checkbox__border--disabled {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.3rem;
+    border: 0.2rem solid $radio-color;
+    margin: 0.2rem;
+  }
+
   input[type="checkbox"]:checked + .c-checkbox__border:before {
     content: '';
     width: 0.3rem;
@@ -169,6 +180,23 @@
   input[type="checkbox"]:checked + .c-checkbox__border {
     border-color: $radio-selected;
     background: $radio-selected;
+  }
+
+  input[type="checkbox"]:checked + .c-checkbox__border--disabled:before {
+    content: '';
+    width: 0.3rem;
+    height: 0.8rem;
+    border: solid $radio-selected;
+    border-width: 0 0.2rem 0.2rem 0;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 0;
+    left: 0.3rem;
+  }
+
+  input[type="checkbox"]:checked + .c-checkbox__border--disabled {
+    border-color: $radio-color;
+    background: $radio-color;
   }
 
   .input-focused + .c-checkbox__border {

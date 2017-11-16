@@ -68,8 +68,8 @@ export default class CheckBox extends React.Component {
                 onBlur={() => onFocus(false)}
               />
               <div
-                className={focused && !isDisabled
-                ? 'c-checkbox__border is-disabled'
+                className={isDisabled
+                ? 'c-checkbox__border--disabled'
                 : 'c-checkbox__border'}
               >
                 <span />
